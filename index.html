@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indian Railways Booking System</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="styles/booking.css">
+  <link rel="stylesheet" href="styles/admin.css">
+  <link rel="stylesheet" href="styles/user.css">
+</head>
+<body>
+  <!-- Login View -->
+  <div id="loginView" class="view">
+    <div class="container">
+      <div class="login-card">
+        <div class="logo-container">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="train-icon"><rect x="4" y="3" width="16" height="16" rx="2"></rect><path d="M4 11h16"></path><path d="M12 3v8"></path><path d="M8 19l-2 3"></path><path d="M18 22l-2-3"></path><path d="M8 15h0"></path><path d="M16 15h0"></path></svg>
+        </div>
+        <h1>Indian Railways</h1>
+        <p class="subtitle">Journey Through India</p>
+        
+        <div id="loginForm">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username">
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password">
+          </div>
+          
+          <button class="btn primary login-btn">Login</button>
+          <div class="form-footer">
+            <span>Don't have an account?</span>
+            <button class="btn-link" id="showRegister">Register</button>
+          </div>
+        </div>
+
+        <div id="registerForm" class="hidden">
+          <div class="form-group">
+            <label for="regFullName">Full Name</label>
+            <input type="text" id="regFullName" placeholder="Enter your full name">
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" placeholder="Enter your email">
+          </div>
+          
+          <div class="form-group">
+            <label for="regUsername">Username</label>
+            <input type="text" id="regUsername" placeholder="Choose a username">
+          </div>
+          
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <input type="password" id="regPassword" placeholder="Choose a password">
+          </div>
+
+          <div class="form-group">
+            <label for="regPasswordConfirm">Confirm Password</label>
+            <input type="password" id="regPasswordConfirm" placeholder="Confirm your password">
+          </div>
+          
+          <button class="btn primary register-btn">Register</button>
+          <div class="form-footer">
+            <span>Already have an account?</span>
+            <button class="btn-link" id="showLogin">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking View -->
+  <div id="bookingView" class="view hidden">
+    <div class="container">
+      <div class="booking-card">
+        <div class="card-header">
+          <h2>Book Your Journey</h2>
+          <button class="icon-button" id="bookingBackBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          </button>
+        </div>
+        
+        <div class="booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="from">From</label>
+              <input type="text" id="from" placeholder="Departure station">
+            </div>
+            
+            <div class="form-group">
+              <label for="to">To</label>
+              <input type="text" id="to" placeholder="Arrival station">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="departDate">Departure Date</label>
+              <input type="date" id="departDate">
+            </div>
+            
+            <div class="form-group">
+              <label for="class">Travel Class</label>
+              <select id="class">
+                <option value="">Select class</option>
+                <option value="1A">AC First Class (1A)</option>
+                <option value="2A">AC 2 Tier (2A)</option>
+                <option value="3A">AC 3 Tier (3A)</option>
+                <option value="SL">Sleeper (SL)</option>
+                <option value="2S">Second Sitting (2S)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="passengers">Number of Passengers</label>
+            <select id="passengers">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          
+          <button class="btn primary" id="searchTrains">Search Trains</button>
+          
+          <div id="trainResults" class="train-results hidden">
+            <h3>Available Trains</h3>
+            <div class="trains-list" id="trainsList">
+              <!-- Train results will be populated here -->
+            </div>
+          </div>
+
+          <div id="passengerDetails" class="passenger-details hidden">
+            <h3>Passenger Details</h3>
+            <div id="passengerForms">
+              <!-- Passenger forms will be generated here -->
+            </div>
+            
+            <div class="button-group">
+              <button class="btn secondary" id="backToTrains">Back</button>
+              <button class="btn primary" id="confirmBooking">Confirm Booking</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Dashboard View -->
+  <div id="userView" class="view hidden">
+    <div class="dashboard-header">
+      <div class="header-content">
+        <div class="header-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+          <h1>My Travel Dashboard</h1>
+        </div>
+        <div class="user-controls">
+          <span id="welcomeUser">Welcome, User</span>
+          <button class="btn secondary" id="bookTicketBtn">Book New Ticket</button>
+          <button class="btn logout" id="logoutBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-container">
+      <div class="dashboard-tabs">
+        <button class="tab-btn active" data-tab="upcoming">Upcoming Journeys</button>
+        <button class="tab-btn" data-tab="completed">Completed Journeys</button>
+        <button class="tab-btn" data-tab="cancelled">Cancelled Tickets</button>
+      </div>
+      
+      <div class="tab-content" id="upcomingTab">
+        <div class="ticket-container" id="upcomingTickets">
+          <!-- Upcoming tickets will be inserted here -->
+          <div class="empty-state hidden" id="noUpcomingTickets">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+            <p>You don't have any upcoming journeys</p>
+            <button class="btn primary" id="bookNewTicket">Book a Ticket</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content hidden" id="completedTab">
+        <div class="ticket-container" id="completedTickets">
+          <!-- Completed tickets will be inserted here -->
+          <div class="empty-state hidden" id="noCompletedTickets">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+            <p>You don't have any completed journeys yet</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content hidden" id="cancelledTab">
+        <div class="ticket-container" id="cancelledTickets">
+          <!-- Cancelled tickets will be inserted here -->
+          <div class="empty-state hidden" id="noCancelledTickets">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+            <p>You don't have any cancelled tickets</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin View -->
+  <div id="adminView" class="view hidden">
+    <div class="admin-header">
+      <div class="header-content">
+        <div class="header-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <h1>Admin Dashboard</h1>
+        </div>
+        <button class="btn secondary" id="adminLogoutBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <div class="admin-container">
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="bookings">All Bookings</button>
+        <button class="tab-btn" data-tab="users">Manage Users</button>
+        <button class="tab-btn" data-tab="trains">Manage Trains</button>
+      </div>
+
+      <div class="tab-content" id="bookingsTab">
+        <div class="admin-card">
+          <div class="card-header">
+            <h2>All Bookings</h2>
+            <div class="header-actions">
+              <input type="text" id="searchBooking" placeholder="Search bookings..." class="search-input">
+              <button class="btn danger-outline" id="deleteSelectedBtn">Delete Selected</button>
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th><input type="checkbox" id="selectAllBookings"></th>
+                  <th>PNR</th>
+                  <th>Name</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Date</th>
+                  <th>Train</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookingTableBody">
+                <!-- Booking data will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content hidden" id="usersTab">
+        <div class="admin-card">
+          <div class="card-header">
+            <h2>Registered Users</h2>
+            <div class="header-actions">
+              <input type="text" id="searchUser" placeholder="Search users..." class="search-input">
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Registered Date</th>
+                  <th>Bookings</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <!-- User data will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content hidden" id="trainsTab">
+        <div class="admin-card">
+          <div class="card-header">
+            <h2>Manage Trains</h2>
+            <div class="header-actions">
+              <button class="btn primary" id="addTrainBtn">Add New Train</button>
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Train No.</th>
+                  <th>Name</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Departure</th>
+                  <th>Arrival</th>
+                  <th>Distance</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="trainsTableBody">
+                <!-- Train data will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Modal -->
+  <div id="ticketModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Ticket Details</h2>
+        <button class="close-modal">×</button>
+      </div>
+      <div class="modal-body" id="ticketDetails">
+        <!-- Ticket details will be inserted here -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn secondary" id="printTicket">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print
+        </button>
+        <button class="btn danger" id="cancelTicket">Cancel Ticket</button>
+        <button class="btn primary" id="closeTicketModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add a loading spinner -->
+  <div id="loadingSpinner" class="loading-spinner hidden">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/user.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

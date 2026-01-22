@@ -1,0 +1,253 @@
+/* User Dashboard Styles */
+.dashboard-header {
+  background: var(--primary);
+  padding: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  color: var(--text-white);
+}
+
+.header-content {
+  max-width: 90rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-title svg {
+  color: var(--text-white);
+}
+
+.header-title h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#welcomeUser {
+  font-weight: 500;
+}
+
+.dashboard-container {
+  max-width: 90rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.dashboard-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.dashboard-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.tab-btn {
+  padding: 0.75rem 1.25rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--primary);
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.ticket-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .ticket-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ticket-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ticket-card {
+  background-color: var(--card);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.status-confirmed {
+  background-color: var(--success);
+  color: white;
+}
+
+.status-waiting {
+  background-color: var(--warning);
+  color: white;
+}
+
+.status-cancelled {
+  background-color: var(--danger);
+  color: white;
+}
+
+.ticket-header {
+  background-color: var(--primary-light);
+  color: white;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-header::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  right: -20px;
+  height: 40px;
+  background-color: var(--card);
+  border-radius: 50%;
+}
+
+.journey-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.station-names {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.station-divider {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.journey-date {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.train-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.train-name-number {
+  font-size: 0.9rem;
+}
+
+.ticket-body {
+  padding: 1.5rem;
+}
+
+.ticket-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+}
+
+.detail-value {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.ticket-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-price {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+}
+
+.ticket-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ticket-action-btn {
+  padding: 0.35rem;
+  border-radius: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: all 0.2s ease;
+}
+
+.ticket-action-btn:hover {
+  color: var(--primary);
+  background-color: rgba(0, 86, 161, 0.1);
+}
